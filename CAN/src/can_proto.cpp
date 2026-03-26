@@ -4,7 +4,6 @@
 #include <net/if.h>
 #include <sys/ioctl.h>
 #include <string.h>
-#include "concurrentqueue.h"
 #include <pthread.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -13,7 +12,7 @@
 
 #define ConcurrentQueue moodycamel::ConcurrentQueue
 
-int recieve_can(ConcurrentQueue<can_frame>& recieve_queue, int& sock){
+int recieve_can(ConcurrentQueue<can_frame>& recieve_queue, int& sock){ //switch to message passing for IPC instead of concurrentqueue
     //have loop run and check for recieved can frames
     struct can_frame frame;
 
